@@ -1,12 +1,14 @@
 import React from 'react';
 
 interface Props {
-    option: Array<string>
+    option: Array<string>;
+    value: string;
+    onChange: (ev: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
 const Select: React.FC<Props> = (props: Props) => {
     return (
-        <select>
+        <select value={props.value} onChange={props.onChange}>
             {props.option.map((value, key) => {
                 return <option value={value} key={key}>{value}</option>
             })}
