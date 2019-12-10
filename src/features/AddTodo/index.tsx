@@ -22,7 +22,7 @@ const AddTodo: React.FC = () => {
       priority: priority,
       deadline: deadline,
     };
-    if (task !== "") {
+    if (task && priority && deadline !== "") {
       dispatch(todosModules.actions.addItem(item));
       setTask('');
       setPriority('');
