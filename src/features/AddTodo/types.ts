@@ -3,7 +3,3 @@ export type AddItem = {
   priority: string;
   deadline: string;
 };
-
-export type Props = {
-  addItem: (item: AddItem) => void;
-};
