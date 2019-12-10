@@ -8,11 +8,20 @@ import todosModules from '../todoModule';
 
 const priorityList = ['high', 'middle', 'low'];
 
+const getToday = () => {
+  const date = new Date();
+  date.setDate(date.getDate());
+  const yyyy = date.getFullYear();
+  const mm = ("0" + (date.getMonth() + 1)).slice(-2);
+  const dd = ("0" + date.getDate()).slice(-2);
+  return `${yyyy}-${mm}-${dd}`;
+}
+
 const AddTodo: React.FC = () => {
 
   const [task, setTask] = useState<string>('');
-  const [priority, setPriority] = useState<string>('');
-  const [deadline, setDeadline] = useState<string>('');
+  const [priority, setPriority] = useState<string>('high');
+  const [deadline, setDeadline] = useState<string>(getToday());
 
   const dispatch = useDispatch();
 
@@ -26,7 +35,7 @@ const AddTodo: React.FC = () => {
       dispatch(todosModules.actions.addItem(item));
       setTask('');
       setPriority('');
-      setDeadline('');
+      setDeadline(getToday());
     }
   };
   return (
