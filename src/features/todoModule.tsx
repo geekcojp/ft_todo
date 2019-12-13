@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from 'redux-starter-kit';
+import { useSelector } from "react-redux";
 import { Items } from './types';
 import { AddItem } from './AddTodo/types';
 
@@ -15,9 +16,17 @@ const todoModule = createSlice({
         priority: action.payload.priority,
         deadline: action.payload.deadline,
       };
-      state.push(item);
+      return [
+        ...state,
+        item
+      ];
     },
   },
+
 });
+
+export const useTodoItems = () => {
+  return useSelector((state: Items) => state);
+}
 
 export default todoModule;
