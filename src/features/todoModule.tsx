@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from 'redux-starter-kit';
 import { useSelector } from "react-redux";
-import { Items } from './types';
+import { Items, Item } from './types';
 import { AddItem } from './AddTodo/types';
 
 const initialStateTodo: Items = [];
@@ -21,6 +21,9 @@ const todoModule = createSlice({
         item
       ];
     },
+    deleteItem: (state: Items, action: PayloadAction<Item["id"]>) => {
+      return state.filter((item) => item.id !== action.payload);
+    }
   },
 
 });
